@@ -9,7 +9,12 @@ import androidx.navigation.toRoute
 @Composable
 fun SetupNavGraph() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.Login) {
+    NavHost(navController = navController, startDestination = Screen.Initial) {
+        composable<Screen.Initial> {
+            InitialScreen(navigateToLogin = {
+                navController.navigate(Screen.Login)
+            })
+        }
         composable<Screen.Login> {
             LoginScreen(navigateToAllUsersScreen = {
                 navController.navigate(Screen.AllUsers)
